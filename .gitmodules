@@ -1,0 +1,3 @@
+[submodule "deepul"]
+	path = deepul
+	url = https://github.com/Shivanshu-Gupta/deepul.git

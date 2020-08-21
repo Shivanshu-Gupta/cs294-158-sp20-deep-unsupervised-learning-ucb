@@ -25,7 +25,7 @@
     * The field of deep generative models is concerned with jointly designing these ingredients to train flexible and powerful models $p_\theta$ capable of approximating distributions over high-dimensional data $\mathbf{x}$.
 * **Maximum likelihood**: 
     * **empirical distribution**: $\hat p_\mathrm{data}(\mathbf{x}) = \frac{1}{n} \sum_{i=1}^n \mathbf{1}[\mathbf{x} = \mathbf{x}^{(i)}]$
-    * **loss function**: $$\mathrm{KL}(\hat p_\mathrm{data} \,\|\, p_\theta) = \mathbb{E}_{\mathbf{x}\sim \hat p_\mathrm{data}}[-\log p_\theta(\mathbf{x})] - H(\hat p_\mathrm{data})$
+    * **loss function**: $\mathrm{KL}(\hat p_\mathrm{data} \,\|\, p_\theta) = \mathbb{E}_{\mathbf{x}\sim \hat p_\mathrm{data}}[-\log p_\theta(\mathbf{x})] - H(\hat p_\mathrm{data})$
     * **objective**: $\arg\min_\theta \ \mathrm{loss}(\theta, \mathbf{x}^{(1)}, \dotsc, \mathbf{x}^{(n)}) = \mathbb{E}_{\mathbf{x} \sim \hat p_\mathrm{data}}[-\log p_\theta(\mathbf{x})] =  \frac{1}{n}\sum_{i=1}^n -\log p_\theta(\mathbf{x}^{(i)})$
 * _Designing the model_
     * Any setting of $\theta$ must define a valid probability distribution over $\mathbf{x}$:
@@ -302,7 +302,7 @@
                 * $q(z)=p_{\theta}\left(z \mid x^{(i)}\right)=\frac{p_{\theta}\left(x^{(i)} \mid z\right) p_{Z}(z)}{p_{\theta}\left(x^{(i)}\right)}$
                 * Propose a parameterized distribution $q$ we know we can work (sample) with easily, 
                 * and try to find a parameter setting that makes it as good as possible i.e. as close as possible to $p_\theta(z | x^{(i)})$
-                    * **objective**: $\min _{q(z)} \mathrm{KL}\left(q(z) \| p_{\theta}\left(z \mid x^{(i)}\right)\right) = \min _{q(z)} \mathbb{E}_{z \sim q(z)}\left[\log q(z)-\log p_{Z}(z)-\log p_{\theta}\left(x^{(i)} \mid z\right)\right] +$ constant independent of $\mathrm{z}$
+                    * **objective**: $\min _{q(z)} \mathrm{KL}\left(q(z) \| p_{\theta}\left(z \mid x^{(i)}\right)\right) = \min _{q(z)} \mathbb{E}_{z \sim q(z)}\left[\log q(z)-\log p_{Z}(z)-\log p_{\theta}\left(x^{(i)} \mid z\right)\right]$ + constant independent of $\mathrm{z}$
             * **Amortized Inference**
                 * _General Idea of Amortization_: if same inference problem needs to be solved many times, can we parameterize a neural network to solve it?
                 * Our case: for all $x^{(i)}$ we want to solve: $\min _{q(z)} \operatorname{KL}\left(q(z) \| p_{\theta}\left(z \mid x^{(i)}\right)\right.$
